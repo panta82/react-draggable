@@ -24,7 +24,8 @@ declare module 'react-draggable' {
     node: HTMLElement,
     x: number, y: number,
     deltaX: number, deltaY: number,
-    lastX: number, lastY: number
+    lastX: number, lastY: number,
+    unboundX: number, unboundY: number,
   }
 
   export type ControlPosition = {x: number, y: number};
