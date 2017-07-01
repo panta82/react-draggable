@@ -247,6 +247,10 @@ export default class Draggable extends React.Component {
       newState.x += this.state.slackX;
       newState.y += this.state.slackY;
 
+			// Store would be x,y
+			uiData.unboundX = newState.x;
+			uiData.unboundY = newState.y;
+
       // Get bound position. This will ceil/floor the x and y within the boundaries.
       // $FlowBug
       [newState.x, newState.y] = getBoundPosition(this, newState.x, newState.y);
@@ -256,8 +260,8 @@ export default class Draggable extends React.Component {
       newState.slackY = this.state.slackY + (y - newState.y);
 
       // Update the event we fire to reflect what really happened after bounds took effect.
-      uiData.x = x;
-      uiData.y = y;
+      uiData.x = newState.x;
+      uiData.y = newState.y;
       uiData.deltaX = newState.x - this.state.x;
       uiData.deltaY = newState.y - this.state.y;
     }

@@ -6,6 +6,7 @@ export type DraggableEventHandler = (e: MouseEvent, data: DraggableData) => void
 export type DraggableData = {
   node: HTMLElement,
   x: number, y: number,
+	unboundX?: number, unboundY?: number,
   deltaX: number, deltaY: number,
   lastX: number, lastY: number
 };
