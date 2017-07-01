@@ -13,9 +13,9 @@ clean:
 	rm -rf dist
 
 lint:
-	@$(BIN)/flow
-	@$(BIN)/eslint lib/* lib/utils/* specs/*
-	@$(BIN)/tsc -p typings
+	@"$(BIN)/flow"
+	@"$(BIN)/eslint" lib/* lib/utils/* specs/*
+	@"$(BIN)/tsc" -p typings
 
 build: $(LIB) $(MIN)
 
@@ -24,7 +24,7 @@ install link:
 	@npm $@
 
 dist/%.min.js: $(LIB) $(BIN)
-	@$(BIN)/uglifyjs $< \
+	@"$(BIN)/uglifyjs" $< \
 	  --output $@ \
 	  --source-map $@.map \
 	  --source-map-url $(basename $@.map) \
@@ -32,10 +32,10 @@ dist/%.min.js: $(LIB) $(BIN)
 	  --compress warnings=false
 
 dist/%.js: $(BIN)
-	@$(BIN)/webpack --devtool source-map
+	@"$(BIN)/webpack" --devtool source-map
 
 test: $(BIN)
-	@$(BIN)/karma start --single-run
+	@"$(BIN)/karma" start --single-run
 
 dev: $(BIN)
 	script/build-watch
